@@ -17,7 +17,10 @@ const isLiked = (id) => {
 
 const addToLiked = (id) => {
   likedPostsId.push(id);
-  showPosts(posts);
+  // when user liked a post, then the reported post do not shown in home page
+  const remainingPosts = posts.filter((post) => !reportedPostsId.includes(post.id));
+  showPosts(remainingPosts);
+  // showPosts(posts);
 };
 
 const reportPost = (id) => {
